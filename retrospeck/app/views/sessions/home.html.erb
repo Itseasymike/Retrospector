@@ -15,7 +15,7 @@
           <%= flash[:notice] %>
         <% else %>
           <% @reviews.each do |review| %>
-        <li>
+          <li>
           <div class="collapsible-header"><p><%= review['title'] %><i class="material-icons right">more_vert</i></p></div>
             <div class="collapsible-body">
               <p><%= review['content'] %></p>
@@ -24,26 +24,13 @@
               <a href="/reviews/<%= review['id']%>/edit" class="btn waves-effect waves-light #64b5f6 blue lighten-2">Edit</a>
             </div>
 
-        </li>
+          </li>
         <% end %>
       <% end %>
       </ul>
     </div>
 
-    <!-- <div class="col s6">
 
-    <h5><span class="card-title">Reviews you've liked!</span></h5>
-      <ul class="collapsible popout" data-collapsible="expanable">
-        <li>
-          <div class="collapsible-header"><p>Your Article title<i class="material-icons right">more_vert</i></p></div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><p>Your Article title<i class="material-icons right">more_vert</i></p></div>
-          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-      </ul>
-    </div> -->
 
   </div>
 </div>
