@@ -4,7 +4,7 @@
       </div>
 
       <div class="col s6 m6 card-panel">
-        <h5 class="blue-text text-darken-2 center-align">Trending Posts</h5>
+        <h5 class="blue-text text-darken-2 center-align">Review These</h5>
       </div>
     <!-- MOST RECENTREVIEWS  + MOST LIKED REVIEWS-->
 
@@ -56,6 +56,19 @@
 
           <!-- TWITTER API-->
           <% @tweet.each do |tweet|%>
+           <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <p class="card-content"> <%= tweet['text']%></p>
+            </div>
+
+            <div class="card-content">
+              <p class="truncate"><span class="card-title activator grey-text text-darken-4"><%= tweet['user']['screen_name']%></span></p>
+              <%= link_to "Review", new_review_path(:data1 => tweet['text'], :data2 => nil) %>
+            </div>
+          </div>
+        <% end %>
+
+          <% @tweet_two.each do |tweet|%>
            <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
               <p class="card-content"> <%= tweet['text']%></p>

@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
     def index
+      #news
       @reviews = Review.all
       @users = User.all
       response = HTTParty.get("https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=#{ENV['news']}", {format: :json})
@@ -14,7 +15,9 @@ before_filter :authenticate_user, :only => [:home, :profile, :setting, :new]
       res = Yelp.client.search($cities, params)
       @yelp = res.businesses.sample
       #twitter
-      @tweet = $twitter.user_timeline($top_100, count: 2)
+      @tweet = $twitter.user_timeline($top_100, count: 1)
+      @tweet_two = $twitter.user_timeline($top_100_two, count: 1)
+
     end
 
     def new
@@ -51,7 +54,7 @@ end
     def search
       @users = User.all
       @reviews = Review.search(params[:search]).order("created_at DESC")
-      flash[:notice] = "We dont have that... or maybe learn 2 spell"
+      flash[:notice] = "Yeah, we dont have that...or maybe learn 2 spell?"
 
     end
 
